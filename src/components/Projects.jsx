@@ -10,10 +10,10 @@ import {
 
 const projectIcons = {
   SakshatAI: <FaRobot size={60} />,
+  BitSnipAI: <FaCode size={60} />,
   Bellezaa: <FaSpa size={60} />,
   Finova: <FaWallet size={60} />,
   "Meme Forge Pro": <FaLaughBeam size={60} />,
-  BitSnipAI: <FaCode size={60} />,
 };
 
 const tag = (t) => (
