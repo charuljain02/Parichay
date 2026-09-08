@@ -1,17 +1,21 @@
 import { skills, projects } from "../data";
+
 import {
   FaRobot,
   FaSpa,
   FaWallet,
   FaLaughBeam,
+  FaCode,
 } from "react-icons/fa";
 
 const projectIcons = {
-  "SakshatAI": <FaRobot size={60} />,
-  "Bellezaa": <FaSpa size={60} />,
-  "Finova": <FaWallet size={60} />,
+  SakshatAI: <FaRobot size={60} />,
+  Bellezaa: <FaSpa size={60} />,
+  Finova: <FaWallet size={60} />,
   "Meme Forge Pro": <FaLaughBeam size={60} />,
+  BitSnipAI: <FaCode size={60} />,
 };
+
 const tag = (t) => (
   <span
     key={t}
@@ -34,69 +38,67 @@ export default function Projects() {
   return (
     <>
       <style>{`
-        .skills-grid{
-          display:grid;
-          grid-template-columns:repeat(3,1fr);
-          gap:1.5rem;
-          max-width:1100px;
-          margin:auto;
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          max-width: 1100px;
+          margin: auto;
         }
 
-        .projects-grid{
-          display:grid;
-          grid-template-columns:repeat(2,1fr);
-          gap:2rem;
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
         }
 
-        .card{
-          border:1px solid #e8e8e8;
-          transition:.3s;
+        .card {
+          border: 1px solid #e8e8e8;
+          transition: 0.3s;
         }
 
-        .card:hover{
-          border-color:#8B0000;
-          transform:translateY(-6px);
+        .card:hover {
+          border-color: #8B0000;
+          transform: translateY(-6px);
         }
 
-        @media(max-width:992px){
-
-          .skills-grid{
-            grid-template-columns:repeat(2,1fr);
+        @media (max-width: 992px) {
+          .skills-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
 
-          .projects-grid{
-            grid-template-columns:1fr;
+          .projects-grid {
+            grid-template-columns: 1fr;
           }
         }
 
-        @media(max-width:768px){
-
+        @media (max-width: 768px) {
           .skills-section,
-          .projects-section{
-            padding:4rem 1.5rem !important;
+          .projects-section {
+            padding: 4rem 1.5rem !important;
           }
 
-          .skills-grid{
-            grid-template-columns:1fr;
+          .skills-grid {
+            grid-template-columns: 1fr;
           }
 
-          .project-actions{
-            flex-direction:column;
-            align-items:flex-start !important;
-            gap:1rem;
+          .project-actions {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 1rem;
           }
 
-          .action-buttons{
-            width:100%;
+          .action-buttons {
+            width: 100%;
           }
 
-          .action-buttons a{
-            flex:1;
-            text-align:center;
+          .action-buttons a {
+            flex: 1;
+            text-align: center;
           }
 
-          .thumbnail{
-            height:170px !important;
+          .thumbnail {
+            height: 170px !important;
           }
         }
       `}</style>
@@ -146,7 +148,12 @@ export default function Projects() {
                 background: "#fff",
               }}
             >
-              <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>
+              <div
+                style={{
+                  fontSize: "2rem",
+                  marginBottom: "1rem",
+                }}
+              >
                 {s.icon}
               </div>
 
@@ -229,7 +236,7 @@ export default function Projects() {
                 overflow: "hidden",
               }}
             >
-              {/* Thumbnail */}
+              {/* ================= THUMBNAIL ================= */}
 
               <div
                 className="thumbnail"
@@ -259,16 +266,17 @@ export default function Projects() {
                   {p.type}
                 </span>
 
-<div
-  style={{
-    color: "#fff",
-    opacity: 0.95,
-  }}
->
-  {projectIcons[p.title]}
-</div>              </div>
+                <div
+                  style={{
+                    color: "#fff",
+                    opacity: 0.95,
+                  }}
+                >
+                  {projectIcons[p.title]}
+                </div>
+              </div>
 
-              {/* Body */}
+              {/* ================= BODY ================= */}
 
               <div style={{ padding: "1.8rem" }}>
                 <h3
@@ -290,6 +298,8 @@ export default function Projects() {
                   {p.desc}
                 </p>
 
+                {/* Tags */}
+
                 <div
                   style={{
                     display: "flex",
@@ -300,6 +310,8 @@ export default function Projects() {
                 >
                   {p.tags.map(tag)}
                 </div>
+
+                {/* Buttons */}
 
                 <div
                   className="project-actions"
@@ -316,6 +328,8 @@ export default function Projects() {
                       gap: ".8rem",
                     }}
                   >
+                    {/* Live Demo */}
+
                     <a
                       href={p.live}
                       target="_blank"
@@ -331,6 +345,8 @@ export default function Projects() {
                     >
                       Live Demo
                     </a>
+
+                    {/* GitHub */}
 
                     <a
                       href={p.github}

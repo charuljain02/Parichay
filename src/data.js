@@ -1,167 +1,359 @@
+import { skills, projects } from "../data";
 import {
-  FaEnvelope,
-  FaPhone,
-  FaMapMarkerAlt,
-  FaGithub,
-  FaLinkedin,
+  FaRobot,
+  FaSpa,
+  FaWallet,
+  FaLaughBeam,
 } from "react-icons/fa";
 
-export const navLinks = ["About", "Skills", "Projects", "Contact"];
+const projectIcons = {
+  "SakshatAI": <FaRobot size={60} />,
+  "Bellezaa": <FaSpa size={60} />,
+  "Finova": <FaWallet size={60} />,
+  "Meme Forge Pro": <FaLaughBeam size={60} />,
+};
+const tag = (t) => (
+  <span
+    key={t}
+    style={{
+      fontSize: "0.7rem",
+      fontWeight: 600,
+      letterSpacing: "0.08em",
+      padding: "0.35rem 0.7rem",
+      borderRadius: "20px",
+      background: "#f9f0f0",
+      color: "#8B0000",
+      whiteSpace: "nowrap",
+    }}
+  >
+    {t}
+  </span>
+);
 
-export const heroSkills = [
-  "Frontend Development",
-  "Backend Development",
-  "DSA & Problem Solving",
-  "UI / UX Design",
-  "Open Source",
-];
+export default function Projects() {
+  return (
+    <>
+      <style>{`
+        .skills-grid{
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:1.5rem;
+          max-width:1100px;
+          margin:auto;
+        }
 
-export const platforms = [
-  "✦ LeetCode",
-  "✦ Codeforces",
-  "✦ GeeksforGeeks",
-  "✦ HackerRank",
-  "✦ CodeChef",
-  "✦ GitHub",
-];
+        .projects-grid{
+          display:grid;
+          grid-template-columns:repeat(2,1fr);
+          gap:2rem;
+        }
 
-export const stats = [
-  { num: "200+", label: "DSA Problems Solved" },
-  { num: "10+", label: "Projects Built" },
-  { num: "3rd", label: "Year B.Tech CSE" },
-  { num: "∞", label: "Cups of Coffee" },
-];
+        .card{
+          border:1px solid #e8e8e8;
+          transition:.3s;
+        }
 
-export const skills = [
-  {
-    name: "Frontend",
-    desc: "Clean, responsive UIs with modern frameworks and attention to detail.",
-    tags: ["React", "HTML/CSS", "JavaScript", "Tailwind"],
-  },
-  {
-    name: "Backend",
-    desc: "Scalable server-side logic with RESTful APIs and databases.",
-    tags: ["Node.js", "Express", "MongoDB", "SQL"],
-  },
-  {
-    name: "DSA",
-    desc: "Strong foundation in data structures, algorithms, and competitive programming.",
-    tags: ["C++", "Java", "Trees", "Graphs", "DP"],
-  },
-  {
-    name: "Tools & Dev",
-    desc: "Comfortable with modern development workflows and deployment.",
-    tags: ["Git", "GitHub", "VS Code", "Linux"],
-  },
-  {
-    name: "UI / UX",
-    desc: "Designing clean interfaces with user-first thinking.",
-    tags: ["Figma", "Wireframing", "Prototyping"],
-  },
-  {
-    name: "Cloud & Deploy",
-    desc: "Deploying projects using modern cloud platforms.",
-    tags: ["Vercel", "Netlify", "Firebase"],
-  },
-];
+        .card:hover{
+          border-color:#8B0000;
+          transform:translateY(-6px);
+        }
 
-export const projects = [
-  {
-    title: "SakshatAI",
-    type: "AI Interview Platform",
-    color: "#8B0000",
-    desc:
-      "An AI-powered interview preparation platform featuring mock interviews, resume analysis, AI feedback and authentication.",
-    tags: ["React", "Node.js", "MongoDB", "AI"],
-    github: "https://github.com/charuljain02/SakshatAI",
-    live: "https://sakshatai-client.onrender.com/",
-  },
-  {
-    title: "Bellezaa",
-    type: "Beauty Marketplace",
-    color: "#A52A2A",
-    desc:
-      "A modern beauty and cosmetics e-commerce website with authentication and elegant UI.",
-    tags: ["React", "Express", "MongoDB", "CSS"],
-    github: "https://github.com/charuljain02/Bellezaa",
-    live: "https://bellezaa-delta.vercel.app/",
-  },
-  {
-    title: "Finova",
-    type: "Finance Tracker",
-    color: "#6A1B1A",
-    desc:
-      "A personal finance tracker helping users monitor expenses, budgets and insights.",
-    tags: ["React", "Node.js", "MongoDB", "Charts"],
-    github: "https://github.com/charuljain02/finova",
-    live: "https://finova-wheat.vercel.app/",
-  },
-  {
-    title: "Meme Forge Pro",
-    type: "Fun Web App",
-    color: "#7B1818",
-    desc:
-      "A meme generator allowing users to create, customize and download memes.",
-    tags: ["React", "API", "JavaScript"],
-    github: "https://github.com/charuljain02/Meme-Generator-App",
-    live: "https://meme-generator-app-navy.vercel.app/",
-  },
-];
+        @media(max-width:992px){
 
-export const contactInfo = [
-  {
-    icon: FaEnvelope,
-    value: "charuljain02@gmail.com",
-    link: "mailto:charuljain02@gmail.com",
-  },
-  {
-    icon: FaPhone,
-    value: "+91 XXXXXXXXXX",
-    link: "tel:+91XXXXXXXXXX",
-  },
-  {
-    icon: FaMapMarkerAlt,
-    value: "Jaipur, Rajasthan, India",
-    link: null,
-  },
-  {
-    icon: FaGithub,
-    value: "github.com/charuljain02",
-    link: "https://github.com/charuljain02",
-  },
-  {
-    icon: FaLinkedin,
-    value: "linkedin.com/in/charul-jain-880639293",
-    link: "https://www.linkedin.com/in/charul-jain-880639293/",
-  },
-];
+          .skills-grid{
+            grid-template-columns:repeat(2,1fr);
+          }
 
-export const footerLinks = [
-  {
-    title: "Navigation",
-    links: [
-      { name: "Home", href: "#home" },
-      { name: "About", href: "#about" },
-      { name: "Skills", href: "#skills" },
-      { name: "Projects", href: "#projects" },
-      { name: "Contact", href: "#contact" },
-    ],
-  },
-  {
-    title: "Connect",
-    links: [
-      {
-        name: "GitHub",
-        href: "https://github.com/charuljain02",
-      },
-      {
-        name: "LinkedIn",
-        href: "https://www.linkedin.com/in/charul-jain-880639293/",
-      },
-      {
-        name: "Resume",
-        href: "/resume.pdf",
-      },
-    ],
-  },
-];
+          .projects-grid{
+            grid-template-columns:1fr;
+          }
+        }
+
+        @media(max-width:768px){
+
+          .skills-section,
+          .projects-section{
+            padding:4rem 1.5rem !important;
+          }
+
+          .skills-grid{
+            grid-template-columns:1fr;
+          }
+
+          .project-actions{
+            flex-direction:column;
+            align-items:flex-start !important;
+            gap:1rem;
+          }
+
+          .action-buttons{
+            width:100%;
+          }
+
+          .action-buttons a{
+            flex:1;
+            text-align:center;
+          }
+
+          .thumbnail{
+            height:170px !important;
+          }
+        }
+      `}</style>
+
+      {/* ================= SKILLS ================= */}
+
+      <section
+        id="skills"
+        className="skills-section"
+        style={{
+          padding: "6rem 4rem",
+          background: "#fff",
+          fontFamily: "'Inter',sans-serif",
+        }}
+      >
+        <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+          <div
+            style={{
+              fontSize: ".75rem",
+              fontWeight: 700,
+              letterSpacing: ".18em",
+              textTransform: "uppercase",
+              color: "#8B0000",
+              marginBottom: "1rem",
+            }}
+          >
+            What I Bring
+          </div>
+
+          <h2
+            style={{
+              fontFamily: "'Playfair Display',serif",
+              fontSize: "clamp(2rem,4vw,3rem)",
+            }}
+          >
+            Skills & Technologies
+          </h2>
+        </div>
+
+        <div className="skills-grid">
+          {skills.map((s) => (
+            <div
+              key={s.name}
+              className="card"
+              style={{
+                padding: "2rem",
+                background: "#fff",
+              }}
+            >
+              <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>
+                {s.icon}
+              </div>
+
+              <h3
+                style={{
+                  marginBottom: ".7rem",
+                  color: "#222",
+                }}
+              >
+                {s.name}
+              </h3>
+
+              <p
+                style={{
+                  color: "#666",
+                  lineHeight: 1.7,
+                  fontSize: ".95rem",
+                }}
+              >
+                {s.desc}
+              </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: ".6rem",
+                  marginTop: "1.3rem",
+                }}
+              >
+                {s.tags.map(tag)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= PROJECTS ================= */}
+
+      <section
+        id="projects"
+        className="projects-section"
+        style={{
+          padding: "6rem 4rem",
+          background: "#fafafa",
+          fontFamily: "'Inter',sans-serif",
+        }}
+      >
+        <div style={{ marginBottom: "4rem" }}>
+          <div
+            style={{
+              fontSize: ".75rem",
+              fontWeight: 700,
+              letterSpacing: ".18em",
+              textTransform: "uppercase",
+              color: "#8B0000",
+              marginBottom: "1rem",
+            }}
+          >
+            My Work
+          </div>
+
+          <h2
+            style={{
+              fontFamily: "'Playfair Display',serif",
+              fontSize: "clamp(2rem,4vw,3rem)",
+            }}
+          >
+            Featured Projects
+          </h2>
+        </div>
+
+        <div className="projects-grid">
+          {projects.map((p) => (
+            <div
+              key={p.title}
+              className="card"
+              style={{
+                background: "#fff",
+                overflow: "hidden",
+              }}
+            >
+              {/* Thumbnail */}
+
+              <div
+                className="thumbnail"
+                style={{
+                  height: 220,
+                  background: p.color,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  position: "relative",
+                }}
+              >
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "18px",
+                    left: "18px",
+                    background: "rgba(255,255,255,.15)",
+                    color: "#fff",
+                    padding: ".35rem .8rem",
+                    fontSize: ".7rem",
+                    fontWeight: 700,
+                    letterSpacing: ".1em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {p.type}
+                </span>
+
+<div
+  style={{
+    color: "#fff",
+    opacity: 0.95,
+  }}
+>
+  {projectIcons[p.title]}
+</div>              </div>
+
+              {/* Body */}
+
+              <div style={{ padding: "1.8rem" }}>
+                <h3
+                  style={{
+                    marginBottom: ".8rem",
+                    color: "#222",
+                  }}
+                >
+                  {p.title}
+                </h3>
+
+                <p
+                  style={{
+                    color: "#666",
+                    lineHeight: 1.7,
+                    marginBottom: "1.3rem",
+                  }}
+                >
+                  {p.desc}
+                </p>
+
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: ".6rem",
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  {p.tags.map(tag)}
+                </div>
+
+                <div
+                  className="project-actions"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    className="action-buttons"
+                    style={{
+                      display: "flex",
+                      gap: ".8rem",
+                    }}
+                  >
+                    <a
+                      href={p.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        background: "#8B0000",
+                        color: "#fff",
+                        padding: ".7rem 1.2rem",
+                        textDecoration: "none",
+                        fontWeight: 600,
+                        fontSize: ".85rem",
+                      }}
+                    >
+                      Live Demo
+                    </a>
+
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        border: "1px solid #8B0000",
+                        color: "#8B0000",
+                        padding: ".7rem 1.2rem",
+                        textDecoration: "none",
+                        fontWeight: 600,
+                        fontSize: ".85rem",
+                      }}
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
